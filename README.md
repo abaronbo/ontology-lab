@@ -1,67 +1,77 @@
 # Ontology Lab
 
-A small, visual ontology editor that runs in your browser.
+A small, visual ontology editor that runs in the browser. Sketch and export, that is all.
 
-Try it: https://abaronbo.github.io/ontology-lab/
+**Try it:** https://abaronbo.github.io/ontology-lab/
 
-## What it does
+## Overview
 
-You draw classes and literals on a canvas, connect them, and get Turtle out.
+Ontology Lab renders classes and literals as nodes on a canvas. Connecting them
+produces properties and subclass relations, and the resulting graph can be
+exported as Turtle in either an OWL or a SHACL flavour.
 
-- Classes are ellipses, literals are rectangles. Drag them around.
-- Hover a class to see two handles. Drag the round one to another class or a literal to create a property. Drag the diamond to another class to say it is a subclass.
-- Click anything to edit its label, IRI, SKOS labels, definition and comment in the side panel.
-- Set how many values a property may have in plain words: exactly 1, at least 1, at most 3, between 1 and 5.
-- Tick classes in the left tree to focus the canvas on them and their neighbours.
-- Export as OWL or as SHACL, copy it or download the file.
+The tool is intended for sketching and sharing ideas. It is not a replacement
+for a full ontology IDE.
 
-Nothing is saved between reloads yet. It is meant for sketching and sharing ideas, not for maintaining a large ontology.
+## Features
 
-## Export
+- Hovering a class reveals two handles: the round handle creates a property
+  when dragged to another class or literal, the diamond handle creates a
+  subclass relation when dragged to another class.
+- Selecting an element opens a side panel for editing its annotations.
+- Property cardinality is expressed in plain terms: exactly 1, at least 1, etc.
+- The class tree on the left filters the canvas to the selected classes and
+  their neighbours.
+- Export to OWL or SHACL, either copied to the clipboard or downloaded as a
+  `.ttl` file.
+- Settings allow changing the base namespace, declaring prefixes, and adding
+  custom annotation properties, which then
+  appear as fields in the panel and in the export.
 
-The same drawing can be exported two ways.
+## Export mapping
 
-| You draw | OWL | SHACL |
+The same drawing is serialised differently depending on the selected target.
+
+| Drawing element | OWL | SHACL |
 |---|---|---|
-| A class | `owl:Class` | `rdfs:Class` that is also a `sh:NodeShape` |
-| A subclass arrow | `rdfs:subClassOf` | `rdfs:subClassOf` |
-| A property to a class | `owl:ObjectProperty` with domain and range | a named `sh:PropertyShape` with `sh:path` and `sh:class` |
-| A property to a literal | `owl:DatatypeProperty` with an `xsd:` range | a named `sh:PropertyShape` with `sh:datatype` |
-| Exactly, at least, at most, between | qualified cardinality restrictions | `sh:minCount` and `sh:maxCount` |
+| Class | `owl:Class` | `rdfs:Class` that is also a `sh:NodeShape` |
+| Subclass arrow | `rdfs:subClassOf` | `rdfs:subClassOf` |
+| Property to a class | `owl:ObjectProperty` with domain and range | named `sh:PropertyShape` with `sh:path` and `sh:class` |
+| Property to a literal | `owl:DatatypeProperty` with an `xsd:` range | named `sh:PropertyShape` with `sh:datatype` |
+| Cardinality | qualified cardinality restrictions | `sh:minCount` and `sh:maxCount` |
 
-In Settings you can change the namespace, add prefixes, and add your own annotation properties such as `dcterms:created`. They show up as fields in the panel and in the export.
+## Getting started
 
-## Run it locally
+Requires Node.js and npm.
 
 ```sh
+git clone https://github.com/abaronbo/ontology-lab.git
+cd ontology-lab
 npm install
 npm run dev
 ```
 
-Other scripts:
+### Scripts
 
-```sh
-npm run build       # type check and production build
-npm run lint
-npm run rdf-check   # parses both exports and checks the SHACL mapping
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Type-check and produce a production build in `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Run oxlint |
+| `npm run rdf-check` | Parse both exports with N3 and verify the SHACL mapping |
+
+## Project structure
+
 ```
-
-## How the code is organised
-
-- `src/model` holds the graph and the state. No React in there.
-- `src/serialize` turns the graph into OWL or SHACL Turtle.
-- `src/components` is the UI: toolbar, tree, canvas, side panel, dialogs.
-- `src/styles/tokens.css` holds all colours, type and spacing. Nothing else hardcodes a colour.
-
-## Known limits
-
-- If you leave the IRI field empty, the label is used as the local name. A label with spaces or quotes then produces invalid Turtle. Fill in the IRI.
-- There is no reasoning and no validation. It draws and it exports, that is all.
-
-## Feedback
-
-Open an issue or start a discussion. Ideas about the export mapping are especially welcome.
+src/
+  model/       Graph data model and state store (framework-agnostic)
+  serialize/   OWL and SHACL Turtle serialisers
+  components/  React UI: toolbar, class tree, canvas, side panel, dialogs
+  styles/      Stylesheets; tokens.css defines all colours, type and spacing
+scripts/       Node scripts used by rdf-check and related tooling
+```
 
 ## License
 
-MIT
+[MIT](LICENSE)

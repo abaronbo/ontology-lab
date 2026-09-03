@@ -1,0 +1,92 @@
+/* Design tokens for Ontology Lab. Every colour, size and motion value used by the app lives here;
+   the other stylesheets only reference these variables. */
+
+:root {
+  /* Palette */
+  --purple-50:  #F2F1F9;
+  --purple-100: #E6E3F3;
+  --purple-200: #CBC3E6;
+  --purple-400: #9E83F5;
+  --purple-600: #5236AB;
+  --purple-700: #3A2679;
+  --purple-900: #200A58;
+
+  --gray-50:  #EFEFEF;
+  --gray-100: #C0C0C0;
+  --gray-200: #A8A8A8;
+  --gray-400: #5C5C5C;
+  --gray-500: #333333;
+  --gray-700: #242424;
+  --gray-900: #151515;
+
+  --white-50:  #FFFFFF;
+  --white-300: #F6F8F9;
+
+  --error-600: #A0001D;
+
+  /* Surfaces and text */
+  --bg-page:        var(--white-300);
+  --surface:        var(--white-50);
+  --text-primary:   var(--gray-500);
+  --text-secondary: var(--gray-400);
+  --text-disabled:  var(--gray-200);
+
+  --border-subtle:  var(--gray-50);
+  --border-default: var(--gray-200);
+  --border-divider: var(--gray-100);
+
+  --color-accent-muted:  var(--purple-50);
+  --color-surface-muted: var(--gray-50);
+  --color-info-high:     var(--purple-600);
+  --color-info-muted:    var(--purple-50);
+  --color-error-high:    var(--error-600);
+
+  /* Buttons */
+  --btn-primary-surface:   var(--purple-600);
+  --btn-primary-text:      var(--white-50);
+  --btn-secondary-surface: var(--gray-50);
+  --btn-secondary-text:    var(--purple-900);
+  --btn-outlined-surface:  var(--white-50);
+  --btn-outlined-text:     var(--purple-600);
+  --btn-outlined-border:   var(--purple-600);
+  --btn-label-text:        var(--purple-900);
+
+  /* Focus, scrim, shadows */
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--purple-600) 32%, transparent);
+  --scrim: color-mix(in srgb, var(--gray-900) 40%, transparent);
+  --shadow-subtle:    0 1px 4px rgba(21, 21, 21, 0.08);
+  --shadow-overlay-2: 0 8px 16px 8px rgba(21, 21, 21, 0.16);
+
+  /* Type */
+  --font-sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --fw-regular:  400;
+  --fw-semibold: 600;
+  --fs-10: 10px;
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+
+  /* Spacing, radius, borders */
+  --space-xs:  4px;
+  --space-s:   8px;
+  --space-m:   12px;
+  --space-l:   16px;
+  --space-xl:  20px;
+  --space-2xl: 24px;
+  --radius-xs:   4px;
+  --radius-full: 999px;
+  --border-thin:   1px;
+  --border-medium: 2px;
+
+  /* Motion */
+  --dur-1: 120ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+html { font-family: var(--font-sans); color: var(--text-primary); background: var(--bg-page); }
+body { font-size: var(--fs-16); line-height: 24px; font-weight: var(--fw-regular); margin: 0; }
+code, .mono { font-family: var(--font-mono); font-size: 0.92em; }

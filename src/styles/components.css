@@ -1,0 +1,103 @@
+/* Design-system component classes used by the editor: Button, Badge, Field.
+   Values come from tokens.css; no hex here. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  height: 32px;
+  padding: 0 var(--space-m);
+  border-radius: var(--radius-xs);
+  border: var(--border-thin) solid transparent;
+  font-family: var(--font-sans);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-semibold);
+  line-height: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--dur-1) var(--ease-standard), color var(--dur-1) var(--ease-standard),
+    border-color var(--dur-1) var(--ease-standard);
+}
+.btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.btn--primary { background: var(--btn-primary-surface); color: var(--btn-primary-text); }
+.btn--primary:hover { background: var(--purple-700); }
+.btn--primary:active { background: var(--purple-900); }
+
+.btn--secondary { background: var(--btn-secondary-surface); color: var(--btn-secondary-text); }
+.btn--secondary:hover { background: var(--purple-100); }
+.btn--secondary:active { background: var(--purple-200); }
+
+.btn--outlined { background: var(--btn-outlined-surface); color: var(--btn-outlined-text); border-color: var(--btn-outlined-border); }
+.btn--outlined:hover { background: var(--purple-50); color: var(--purple-700); border-color: var(--purple-700); }
+.btn--outlined:active { background: var(--purple-100); color: var(--purple-900); border-color: var(--purple-900); }
+
+.btn--label { background: transparent; color: var(--btn-label-text); padding: 0 var(--space-s); }
+.btn--label:hover { background: var(--purple-50); }
+.btn--label:active { background: var(--purple-100); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 var(--space-s);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-semibold);
+  line-height: 16px;
+  white-space: nowrap;
+}
+.badge--info { background: var(--color-info-muted); color: var(--color-info-high); }
+
+.field { display: block; min-width: 0; }
+.field__label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-semibold);
+  color: var(--text-secondary);
+}
+.field__label--plain { font-weight: var(--fw-regular); }
+.field__row { display: flex; align-items: center; gap: var(--space-xs); }
+.field__prefix { font-size: var(--fs-14); font-family: var(--font-mono); color: var(--text-secondary); }
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--space-s) 10px;
+  border: var(--border-thin) solid var(--border-default);
+  border-radius: var(--radius-xs);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-14);
+  line-height: 20px;
+}
+.input--mono, .textarea--mono { font-family: var(--font-mono); }
+.textarea { resize: vertical; }
+.input[aria-invalid='true'] { border-color: var(--color-error-high); }
+.input:focus, .textarea:focus, .select:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-color: var(--purple-600);
+}
+input[type='checkbox'] { accent-color: var(--purple-600); }
+.checkbox { width: 14px; height: 14px; flex-shrink: 0; cursor: pointer; margin: 0; }
+
+.statement {
+  background: var(--color-surface-muted);
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+.section-heading {
+  font-size: var(--fs-12);
+  font-weight: var(--fw-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}

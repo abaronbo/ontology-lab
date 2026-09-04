@@ -1,5 +1,6 @@
 import { Canvas } from './components/canvas/Canvas';
 import { ExportDialog } from './components/modals/ExportDialog';
+import { ImportDialog } from './components/modals/ImportDialog';
 import { SettingsDialog } from './components/modals/SettingsDialog';
 import { RightPanel } from './components/panel/RightPanel';
 import { Toolbar } from './components/Toolbar';
@@ -19,6 +20,7 @@ function Shell() {
       </div>
       {state.settingsOpen && <SettingsDialog />}
       {state.exportOpen && <ExportDialog />}
+      {state.importOpen && <ImportDialog />}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import type {
   AppState,
   CardMode,
   ConnectKind,
+  Counters,
   ExportFormat,
   OntoEdge,
   OntoNode,
@@ -38,6 +39,8 @@ export type Action =
   | { type: 'clear' }
   | { type: 'setSettingsOpen'; open: boolean }
   | { type: 'setExportOpen'; open: boolean }
+  | { type: 'setImportOpen'; open: boolean }
+  | { type: 'importGraph'; nodes: OntoNode[]; edges: OntoEdge[]; settings: Settings; counters: Counters }
   | { type: 'setExportFormat'; format: ExportFormat }
   | { type: 'updateSettings'; patch: Partial<Settings> }
   | { type: 'setCustomAnnotation'; target: 'node' | 'edge'; id: string; key: string; value: string }
@@ -82,6 +85,7 @@ export const initialState: AppState = {
   connecting: null,
   settingsOpen: false,
   exportOpen: false,
+  importOpen: false,
   exportFormat: 'owl',
   settings: DEFAULT_SETTINGS,
   counters: { id: 4, classes: 3, literals: 1, properties: 2 },
@@ -197,6 +201,21 @@ export function reducer(s: AppState, a: Action): AppState {
       return { ...s, settingsOpen: a.open };
     case 'setExportOpen':
       return { ...s, exportOpen: a.open };
+    case 'setImportOpen':
+      return { ...s, importOpen: a.open };
+    case 'importGraph':
+      return {
+        ...s,
+        nodes: a.nodes,
+        edges: a.edges,
+        settings: a.settings,
+        counters: a.counters,
+        selection: null,
+        focusIds: [],
+        hoverNodeId: null,
+        connecting: null,
+        importOpen: false,
+      };
     case 'setExportFormat':
       return { ...s, exportFormat: a.format };
     case 'updateSettings':

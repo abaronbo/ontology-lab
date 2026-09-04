@@ -90,6 +90,7 @@ export interface AppState {
   connecting: Connecting | null;
   settingsOpen: boolean;
   exportOpen: boolean;
+  importOpen: boolean;
   exportFormat: ExportFormat;
   settings: Settings;
   counters: Counters;

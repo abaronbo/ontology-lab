@@ -12,6 +12,7 @@ export function Toolbar() {
         <div className="toolbar__divider" />
         <Button variant="outlined" onClick={() => dispatch({ type: 'clear' })}>Clear</Button>
         <Button variant="outlined" onClick={() => dispatch({ type: 'setSettingsOpen', open: true })}>Settings</Button>
+        <Button variant="outlined" onClick={() => dispatch({ type: 'setImportOpen', open: true })}>Import Turtle</Button>
         <Button variant="primary" onClick={() => dispatch({ type: 'setExportOpen', open: true })}>Export Turtle</Button>
       </div>
     </header>

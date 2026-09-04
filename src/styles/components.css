@@ -93,6 +93,29 @@ input[type='checkbox'] { accent-color: var(--purple-600); }
   color: var(--text-primary);
   line-height: 1.5;
 }
+.modal--import { width: 560px; }
+.import__text {
+  min-height: 220px;
+  resize: vertical;
+}
+.import__note {
+  font-size: var(--fs-11);
+  color: var(--text-secondary);
+}
+.import__error {
+  font-size: var(--fs-13);
+  color: var(--color-error-high);
+}
+.import__warnings {
+  margin: 0;
+  padding-left: var(--space-l);
+  font-size: var(--fs-13);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
 .section-heading {
   font-size: var(--fs-12);
   font-weight: var(--fw-semibold);

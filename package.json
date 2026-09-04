@@ -9,18 +9,20 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "parity": "tsx scripts/turtle-parity.mjs",
-    "rdf-check": "tsx scripts/rdf-check.mjs"
+    "rdf-check": "tsx scripts/rdf-check.mjs",
+    "roundtrip-check": "tsx scripts/roundtrip-check.mjs"
   },
   "dependencies": {
+    "n3": "^2.7.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@types/n3": "^1.26.3",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.1.0",
-    "n3": "^2.7.4",
     "oxlint": "^1.79.0",
     "tsx": "^4.23.13",
     "typescript": "~6.0.2",

@@ -27,6 +27,9 @@ for a full ontology IDE.
 - Settings allow changing the base namespace, declaring prefixes, and adding
   custom annotation properties, which then
   appear as fields in the panel and in the export.
+- Import an OWL or SHACL Turtle file (or a pasted snippet) back into an
+  editable graph. Custom annotation predicates are detected and added to
+  Settings automatically.
 
 ## Export mapping
 
@@ -60,6 +63,7 @@ npm run dev
 | `npm run preview` | Serve the production build locally |
 | `npm run lint` | Run oxlint |
 | `npm run rdf-check` | Parse both exports with N3 and verify the SHACL mapping |
+| `npm run roundtrip-check` | Import both exports back and verify a byte-identical re-export |
 
 ## Project structure
 

@@ -3,7 +3,13 @@
 import { customAnnotationKeys } from '../model/derive';
 import type { PrefixEntry, Settings } from '../model/types';
 
-export const esc = (s: string | undefined) => (s ?? '').replace(/"/g, '\\"');
+export const esc = (s: string | undefined) =>
+  (s ?? '')
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '\\"')
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r')
+    .replace(/\t/g, '\\t');
 
 /** Local name of a resource: the IRI field, falling back to the label (prototype behaviour, unsanitized). */
 export const localName = (r: { iri?: string; label?: string }) => r.iri || r.label || '';
